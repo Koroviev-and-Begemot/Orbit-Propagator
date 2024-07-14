@@ -80,7 +80,6 @@ for j = 1:length(t_b)
 
 
     end
-   disp(t)
     
     while t < t_b(j) + tau_b(j)
         
@@ -125,38 +124,8 @@ for j = 1:length(t_b)
            waitbar(i/k,f,out);
         end
     end
-    disp(t)
      disp(['burn ', num2str(j), ' occured at ', num2str(t), 's and lasted ', num2str(tau_b(j))])
 end
-
-% while t < sim_time
-% 
-%    moon_state_bar(:,i)     = moon_state(:,i-1) + delta_t*moon_state_dot(:,i-1);
-%    moon_state_dot_bar(:,i) = [moon_state_bar(4:6,i); -mu_earth*moon_state_bar(1:3,i)./norm(moon_state_bar(1:3,i)).^3];
-%    moon_state(:,i)         = moon_state(:,i-1) + delta_t/2*(moon_state_dot(:,i-1) + moon_state_dot_bar(:,i));
-%    moon_state_dot(:,i)     = [moon_state(4:6,i); -mu_earth*moon_state(1:3,i)./norm(moon_state(1:3,i)).^3];
-% 
-%    sat_state_bar(:,i)      = sat_state(:,i-1) + delta_t*sat_state_dot(:,i-1);
-%    sat_state_dot_bar(:,i)  = [sat_state_bar(4:6,i);
-%                               -mu_earth*sat_state_bar(1:3,i)./norm(sat_state_bar(1:3,i)).^3 - mu_moon*(sat_state_bar(1:3,i) - moon_state_bar(1:3,i))./norm(sat_state_bar(1:3,i) - moon_state_bar(1:3,i)).^3 + a_b(:,i)];
-%    sat_state(:,i)          = sat_state(:,i-1) + delta_t/2*(sat_state_dot(:,i-1) + sat_state_dot_bar(:,i));
-%    sat_state_dot(:,i)      = [sat_state(4:6,i); -mu_earth*sat_state(1:3,i)./norm(sat_state(1:3,i)).^3 - mu_moon*(sat_state(1:3,i) - moon_state(1:3,i))./norm(sat_state(1:3,i) - moon_state(1:3,i)).^3 + a_b(:,i)];
-% 
-% 
-%    [a_moon(i),e_moon(i),i_moon(i),RAAN_moon(i),nu_moon(i),omega_moon(i)] = RandV2Elements(moon_state(1:3,i),moon_state(4:6,i),mu_earth);
-%    %[a_sat(i),e_sat(i),i_sat(i),RAAN_sat(i),nu_sat(i),omega_sat(i)] = RandV2Elements(sat_state(1:3,i)-moon_state(1:3,i),sat_state(4:6,i)-moon_state(4:6,i),mu_moon);
-%    [a_sat(i),e_sat(i),i_sat(i),RAAN_sat(i),nu_sat(i),omega_sat(i)] = RandV2Elements(sat_state(1:3,i),sat_state(4:6,i),mu_earth);
-% 
-%    t = t + delta_t;
-%    i = i+1;
-% 
-% 
-%     if mod(i,1000) == 0
-%      out = ['Calculating ' num2str(round(i/k,2)*100) '%'];
-%      waitbar(i/k,f,out);
-%     end
-% 
-% end
 
 close(f)
 %% plots
